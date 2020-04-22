@@ -1,0 +1,6 @@
+framework module Pods_AddEditPerson {
+  umbrella header "Pods-AddEditPerson-umbrella.h"
+
+  export *
+  module * { export * }
+}
