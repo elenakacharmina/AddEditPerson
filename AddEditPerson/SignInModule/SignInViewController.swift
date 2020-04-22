@@ -67,6 +67,8 @@ extension SignInViewController: UITextFieldDelegate {
         if (textField == emailField){
             let nextField = passwordField!
             nextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
         }
         return true
     }
@@ -78,9 +80,11 @@ extension SignInViewController {
     func setupUI() {
         emailField = UITextField()
         emailField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        emailField.delegate = self
         
         passwordField = UITextField()
         passwordField.attributedPlaceholder = NSAttributedString(string: "Пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passwordField.delegate = self
         
         loginButton = UIButton(type: .system)
         loginButton.setTitle("Войти", for: .normal)
@@ -119,3 +123,15 @@ extension SignInViewController {
         ])
     }
 }
+
+
+//extension SignInViewController: UITextFieldDelegate {
+//
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//
+//        textField.becomeFirstResponder()
+//
+//
+//        return true
+//    }
+//}

@@ -86,11 +86,13 @@ class CenterViewController: UIViewController {
         newTextFieldLeft.attributedPlaceholder = NSAttributedString(string: "some attribute", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         newTextFieldLeft.borderStyle = .roundedRect
         newTextFieldLeft.backgroundColor = .white
+        newTextFieldLeft.delegate = self
         
         let newTextFieldRight = UITextField()
         newTextFieldRight.attributedPlaceholder = NSAttributedString(string: "attribute value", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         newTextFieldRight.borderStyle = .roundedRect
         newTextFieldRight.backgroundColor = .white
+        newTextFieldRight.delegate = self
         
         NSLayoutConstraint.activate([
             newTextFieldLeft.heightAnchor.constraint(equalToConstant: 30),
@@ -286,6 +288,7 @@ extension CenterViewController {
         textFieldName = UITextField()
         textFieldName.attributedPlaceholder = NSAttributedString(string: "Enter name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         textFieldName.borderStyle = .roundedRect
+        textFieldName.delegate = self
         
         labelAge = UILabel()
         labelAge.text = "Age"
@@ -294,6 +297,7 @@ extension CenterViewController {
         textFieldAge = UITextField()
         textFieldAge.attributedPlaceholder = NSAttributedString(string: "Enter age", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
         textFieldAge.borderStyle = .roundedRect
+        textFieldAge.delegate = self
         textFieldAge.delegate = self
         
         labelFirst = UILabel()
@@ -401,11 +405,16 @@ extension CenterViewController {
 // MARK: - UITextFieldDelegate
 
 extension CenterViewController: UITextFieldDelegate {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-    {
-        let allowedCharacters = CharacterSet.decimalDigits
-        let characterSet = CharacterSet(charactersIn: string)
-        return allowedCharacters.isSuperset(of: characterSet)
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+//    {
+//        let allowedCharacters = CharacterSet.decimalDigits
+//        let characterSet = CharacterSet(charactersIn: string)
+//        return allowedCharacters.isSuperset(of: characterSet)
+//    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 

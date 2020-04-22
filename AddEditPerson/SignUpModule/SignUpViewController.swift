@@ -68,11 +68,11 @@ extension SignUpViewController: UITextFieldDelegate {
         if (textField == nameField){
             let nextField = emailField!
             nextField.becomeFirstResponder()
-        } else {
-            if (textField == emailField){
+        } else if (textField == emailField){
             let nextField = passwordField!
             nextField.becomeFirstResponder()
-            }
+        } else {
+            textField.resignFirstResponder()
         }
         return true
     }
@@ -85,13 +85,16 @@ extension SignUpViewController {
     func setupUI() {
         nameField = UITextField()
         nameField.attributedPlaceholder = NSAttributedString(string: "Имя пользователя", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        nameField.delegate = self
         
         
         emailField = UITextField()
         emailField.attributedPlaceholder = NSAttributedString(string: "email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        emailField.delegate = self
         
         passwordField = UITextField()
         passwordField.attributedPlaceholder = NSAttributedString(string: "Пароль", attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray])
+        passwordField.delegate = self
         
         registerButton = UIButton(type: .system)
         registerButton.setTitle("Зарегистрироваться", for: .normal)

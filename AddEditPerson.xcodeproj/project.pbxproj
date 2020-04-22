@@ -127,8 +127,8 @@
 		28DC19E62447641C0015BE4C /* SignUpModule */ = {
 			isa = PBXGroup;
 			children = (
-				28DC19E0244764010015BE4C /* SignUpPresenter.swift */,
 				28DC19E22447640D0015BE4C /* SignUpViewController.swift */,
+				28DC19E0244764010015BE4C /* SignUpPresenter.swift */,
 			);
 			path = SignUpModule;
 			sourceTree = "<group>";
